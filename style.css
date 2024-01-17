@@ -6,11 +6,13 @@
 }
 
 header{
+  width: 80%;
+  max-width: 1288px;
+  margin: 0 auto;
   height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 76px;
 }
 .login-button{
   display: inline-flex;
@@ -22,6 +24,7 @@ header{
   background: #5D37F3;
   color: white;
   border: none;
+  cursor: pointer;
 }
 
 section{
@@ -35,17 +38,20 @@ h1{
   font-style: normal;
   font-weight: 700;
   line-height: 72px;
-  padding: 89px 128px;
 }
 .blog-div{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 80%;
+  max-width: 1288px;
+  margin: 0 auto;
 }
 .filter-div{
   display: inline-flex;
   align-items: flex-start;
   gap: 24px;
+  margin: 64px 0;
 }
 .fil-center{
   display: flex;
@@ -89,26 +95,24 @@ h1{
 }
 
 .container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  width: 1288px;
+  max-width: 100%;
+  margin: 0 auto;
 }
 .info-cards{
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
-  gap: 36px;
-  row-gap: 56px;
-  margin: 0 auto;
-  margin-top: 72px;
 }
 .cards{
   width: 408px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-right: 32px;
+  margin-bottom: 56px;
+}
+.cards:nth-child(3n) {
+  margin-right: 0;
 }
 .cards .image{
   height: 328px;
