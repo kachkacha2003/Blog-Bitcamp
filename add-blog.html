@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+    <link rel="stylesheet" href="plugin/swiper/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="plugin/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="css/fonts.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div
+          class="header_block d-flex align-items-center justify-content-center"
+        >
+          <a href="index.html">
+            <div class="logo_">
+              <img
+                src="img/redberry-logo.svg"
+                alt="redberry-logo"
+                class="img_fluid"
+              />
+            </div>
+          </a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="hero_section">
+        <div class="container">
+          <div class="d-flex">
+            <a href="#">
+              <div class="back_btn">
+                <img src="img/Arrow.svg" alt="" />
+              </div>
+            </a>
+            <div class="blog_add_block">
+              <h2 class="blog_title">ბლოგის დამატება</h2>
+              <form class="blog_form">
+                <div class="blog_input_item d-flex flex-column">
+                  <label class="blog_label">ატვირთეთ ფოტო</label>
+                  <div class="upload_images">
+                    <label
+                      class="upload_label d-flex flex-column align-items-center justify-content-center"
+                    >
+                      <img src="img/folder-add.svg" alt="" class="mb-24" />
+                      <p>ჩააგდეთ ფაილი აქ ან <span>აირჩიეთ ფაილი</span></p>
+                    </label>
+                    <input type="file" accept="image/*" />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="plugin/swiper/js/swiper-bundle.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
