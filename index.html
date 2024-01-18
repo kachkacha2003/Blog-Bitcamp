@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/modal.css">
+  <script src="javascript/script.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&family=Fira+Mono:wght@500&display=swap" rel="stylesheet">
@@ -240,5 +242,20 @@
     </div>
   </div>
   </section>
+
+
+  <div class="modal">
+    <svg class="close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M7.75732 16.2426L16.2426 7.75736" stroke="#1A1A1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M16.2426 16.2426L7.75732 7.75736" stroke="#1A1A1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <h2>შესვლა</h2>
+    <form class="bottom-modal" method="dialog">
+      <label class="mail">ელ-ფოსტა</label>
+      <input class="email" type="email" placeholder="Example@redberry.ge">
+    <button class="submit">შესვლა</button>
+    </form>
+  </div>
+  <div class="overlay"></div>
 </body>
 </html>
