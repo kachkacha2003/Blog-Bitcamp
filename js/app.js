@@ -7,6 +7,9 @@ var swiper = new Swiper(".s1", {
   },
 });
 
+localStorage.getItem("id")
+=======
+
 // image upload function
 let uploadImagesBlock = document.querySelector(".upload_images_block");
 let deleteBtn = document.querySelector(".delete_btn");
@@ -255,3 +258,4 @@ close.addEventListener("click", function (e) {
   successBody.style.visibility = "hidden";
   successBody.style.opacity = "0";
 });
+
