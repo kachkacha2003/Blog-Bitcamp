@@ -6,3 +6,4 @@ var swiper = new Swiper(".s1", {
     prevEl: ".swiper-button-prev",
   },
 });
+localStorage.getItem("id")
