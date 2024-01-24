@@ -40,17 +40,115 @@
             <div class="blog_add_block">
               <h2 class="blog_title">ბლოგის დამატება</h2>
               <form class="blog_form">
-                <div class="blog_input_item d-flex flex-column">
+                <div class="blog_input_item d-flex flex-column mb-24">
                   <label class="blog_label">ატვირთეთ ფოტო</label>
-                  <div class="upload_images">
+                  <div class="upload_images_block">
                     <label
                       class="upload_label d-flex flex-column align-items-center justify-content-center"
                     >
                       <img src="img/folder-add.svg" alt="" class="mb-24" />
                       <p>ჩააგდეთ ფაილი აქ ან <span>აირჩიეთ ფაილი</span></p>
                     </label>
-                    <input type="file" accept="image/*" />
+                    <input
+                      type="file"
+                      accept="image/*"
+                      id="fileInput"
+                      onchange="previewImage()"
+                    />
                   </div>
+                  <div id="imagePreview"></div>
+                  <div
+                    class="uploaded_image d-flex align-items-center justify-content-between"
+                  >
+                    <div class="d-flex align-items-center">
+                      <img src="img/gallery.svg" alt="galleryicon" />
+                      <p class="image_name"></p>
+                    </div>
+                    <div class="delete_btn">
+                      <i class="fa-solid fa-x"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between mb-24">
+                  <div class="add_inputs d-flex flex-column">
+                    <label for="" class="sm_title mb-8"> ავტორი * </label>
+                    <input
+                      type="text"
+                      placeholder="შეიყვანეთ ავტორი"
+                      class="author_input mb-8"
+                    />
+                    <ul class="ul_list required_txt">
+                      <li class="li_item min_simbols">მინიმუმ 4 სიმბოლო</li>
+                      <li class="li_item min_words">მინიმუმ ორი სიტყვა</li>
+                      <li class="li_item language_">
+                        მხოლოდ ქართული სიმბოლოები
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="add_inputs d-flex flex-column">
+                    <label for="" class="sm_title mb-8"> სათური *</label>
+                    <input
+                      type="text"
+                      placeholder="შეიყვანეთ სათაური"
+                      class="title_input mb-8"
+                    />
+                    <p class="required_txt title_validation">
+                      მინიმუმ 2 სიმბოლო
+                    </p>
+                  </div>
+                </div>
+                <div class="d-flex flex-column mb-24">
+                  <label for="" class="sm_title mb-8">აღწერა *</label>
+                  <textarea class="blog_txtarea mb-8"></textarea>
+                  <p class="required_txt txtarea_validation">
+                    მინიმუმ 2 სიმბოლო
+                  </p>
+                </div>
+                <div class="d-flex justify-content-between mb-24">
+                  <div class="add_inputs d-flex flex-column">
+                    <label for="" class="sm_title mb-8">
+                      გამოქვეყნების თარიღი *
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="12/12/2023"
+                      class="date_input mb-8"
+                    />
+                  </div>
+                  <div class="add_inputs d-flex flex-column">
+                    <label for="" class="sm_title mb-8"> კატეგორია *</label>
+                    <div class="dropdown">
+                      <div class="btn_item">
+                        <button id="dropbtn" class="dropbtn">
+                          შეიყვანეთ სათაური
+                        </button>
+                      </div>
+                      <div id="dropdown-content" class="dropdown-content">
+                        <label class="drop_label"
+                          ><input type="checkbox" value="Item1" />
+                          მარკეტი
+                        </label>
+                        <label class="drop_label"
+                          ><input type="checkbox" value="Item2" /> აპლიკაცია
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="add_inputs d-flex flex-column">
+                  <label for="" class="sm_title mb-8"> ელ.ფოსტა * </label>
+                  <input
+                    type="text"
+                    placeholder="Example@redberry.ge"
+                    class="emai_input mb-8"
+                  />
+                  <p class="d-flex important_msg">
+                    <i class="fa-solid fa-circle-exclamation"></i> მეილი უნდა
+                    მთავრდებოდეს @redberry.ge-ით
+                  </p>
+                </div>
+                <div class="d-flex justify-content-end">
+                  <button class="send_btn">გამოქვეყნება</button>
                 </div>
               </form>
             </div>
@@ -58,6 +156,18 @@
         </div>
       </section>
     </main>
+    <div class="success_body">
+      <div class="success_message">
+        <div class="close"><i class="fa-solid fa-xmark"></i></div>
+        <div
+          class="d-flex flex-column align-items-center justify-content-center"
+        >
+          <img src="img/tick-circle.svg" alt="success_message" class="mb-16" />
+          <h3 class="success_msg mb-48">ჩანაწი წარმატებით დაემატა</h3>
+          <div class="back_">მთავარ გვერდზე დაბრუნება</div>
+        </div>
+      </div>
+    </div>
     <script src="plugin/swiper/js/swiper-bundle.min.js"></script>
     <script src="js/app.js"></script>
   </body>
