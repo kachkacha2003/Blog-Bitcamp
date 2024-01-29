@@ -7,6 +7,9 @@ var swiper = new Swiper(".s1", {
   },
 });
 
+localStorage.getItem("id")
+=======
+
 // image upload function
 let sendButton = document.querySelector(".send_btn");
 let endBtn = document.querySelector(".end_btn");
@@ -315,6 +318,7 @@ close.addEventListener("click", function (e) {
   successBody.style.opacity = "0";
 });
 
+
 // post blog
 
 async function postBlog(item) {
@@ -364,3 +368,4 @@ async function getTokenFunc(email) {
     return error.message;
   }
 }
+
