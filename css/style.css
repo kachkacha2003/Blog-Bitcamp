@@ -253,9 +253,14 @@ header {
 .dropbtn {
   width: 288px;
 }
+
 .dropbtn {
   display: flex;
   align-items: center;
+  overflow-x: hidden;
+}
+.dropbtn::-webkit-scrollbar {
+  display: none;
 }
 .add_inputs input,
 .blog_txtarea,
@@ -306,15 +311,23 @@ input:focus-visible,
   font-size: 14px;
   color: #1a1a1f;
 }
-.send_btn {
+.send_btn,
+.end_btn {
   width: 288px;
   padding: 10px 90px;
   font-size: 14px;
   font-family: "FiraGO md";
-  background-color: #e4e3eb;
+
   border-radius: 8px;
   color: #fff;
   border: none;
+}
+.send_btn {
+  background-color: #e4e3eb;
+}
+.end_btn {
+  background-color: #5d37f3;
+  display: none;
 }
 .uploaded_image {
   display: none;
@@ -352,23 +365,41 @@ input:focus-visible,
   z-index: 1;
   top: 100%;
   left: 0;
+  max-height: 150px;
+  overflow-y: scroll;
+  flex-wrap: wrap;
 }
 /* Style the labels inside the dropdown */
-.dropdown-content label {
-  display: block;
+.dropdown-content .drop_label {
+  display: flex;
+  align-items: center;
   padding: 10px;
   text-decoration: none;
   color: #333;
+  cursor: pointer;
 }
-
-/* Change color on hover */
-.dropdown-content label:hover {
-  background-color: #ddd;
+.inner_item {
+  font-family: "FiraGO rg";
+  display: flex;
+  align-items: center;
 }
-
+.inner_item i {
+  margin-left: 8px;
+}
+.drop_label label,
+.inner_item {
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 12px;
+}
+.drop_label input {
+  display: none;
+}
 /* Show the dropdown content when the button is clicked */
 .dropdown.active .dropdown-content {
-  display: block;
+  display: flex;
 }
 
 /* Style the arrow indicator */
@@ -398,9 +429,6 @@ input:focus-visible,
 }
 .inner_item {
   margin-right: 10px;
-}
-.btnactive {
-  background-color: #5d37f3;
 }
 .success_message {
   width: 480px;
@@ -447,4 +475,7 @@ input:focus-visible,
   align-items: center;
   justify-content: center;
   background-color: rgba(26, 26, 31, 0.4);
+}
+.drop_label {
+  display: flex;
 }
