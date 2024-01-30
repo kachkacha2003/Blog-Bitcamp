@@ -8,7 +8,6 @@ var swiper = new Swiper(".s1", {
 });
 
 localStorage.getItem("id")
-=======
 
 // image upload function
 let uploadImagesBlock = document.querySelector(".upload_images_block");
