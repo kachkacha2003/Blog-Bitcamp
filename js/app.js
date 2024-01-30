@@ -7,7 +7,10 @@ var swiper = new Swiper(".s1", {
   },
 });
 
+
+=======
 localStorage.getItem("id")
+
 
 // image upload function
 let sendButton = document.querySelector(".send_btn");
@@ -19,18 +22,20 @@ let file = "";
 let imgVar = false;
 let imgData;
 let fileInput = document.querySelector("#fileInput");
+let imageName = document.querySelector(".image_name");
 
 function previewImage() {
-  let imageName = document.querySelector(".image_name");
   if (fileInput.files.length > 0) {
     file = fileInput.files[0];
     if (file.type && file.type.indexOf("image") === 0) {
       imgData = URL.createObjectURL(file);
       imgData = imgData.replace("blob:", "");
+      setDataImg();
     } else {
       imageName.textContent = "Please select an image file.";
       return;
     }
+    localStorage.setItem("fileName", file.name);
     imageName.textContent = file.name;
     uploadImagesBlock.style.display = "none";
     uploadedImgBlock.style.display = "flex";
@@ -40,8 +45,28 @@ function previewImage() {
     imageName.textContent = "";
   }
 }
+
+function setDataImg() {
+  localStorage.setItem("imageData", imgData);
+}
+function loadDataFromLocalStorage() {
+  imgData = localStorage.getItem("imageData");
+  if (imgData) {
+    uploadImagesBlock.style.display = "none";
+    uploadedImgBlock.style.display = "flex";
+    document.querySelector(".uploaded_image").src = imgData;
+    let fileName = localStorage.getItem("fileName");
+    if (fileName) {
+      imageName.textContent = fileName;
+    }
+  }
+}
+
 previewImage();
 
+function removeData() {
+  localStorage.removeItem("imageData");
+}
 function deleteFunction() {
   deleteBtn.addEventListener("click", function () {
     file = fileInput.value = "";
@@ -49,6 +74,7 @@ function deleteFunction() {
     uploadImagesBlock.style.display = "inline-block";
     imgVar = false;
     inputFilledFunction();
+    removeData();
   });
 }
 deleteFunction();
@@ -81,6 +107,7 @@ function inputFilledFunction() {
     sendButton.style.display = "block";
     endBtn.style.display = "none";
   }
+  loadInfo();
 }
 
 function authorValidation() {
@@ -124,8 +151,15 @@ authorInput.addEventListener("input", function () {
   minWordValidation();
   validateInput();
   inputFilledFunction();
+  setAuthorData();
 });
 
+function setAuthorData() {
+  localStorage.setItem("authorData", authorInput.value);
+}
+function getAuthorData() {
+  authorInput.value = localStorage.getItem("authorData");
+}
 //title input validation
 
 let titleInput = document.querySelector(".title_input");
@@ -134,6 +168,7 @@ let titleVar = false;
 
 titleInput.addEventListener("input", function () {
   titleValidation();
+  setTitleData();
 });
 
 function titleValidation() {
@@ -148,6 +183,13 @@ function titleValidation() {
   }
 }
 
+function setTitleData() {
+  localStorage.setItem("titleData", titleInput.value);
+}
+
+function getTitleData() {
+  titleInput.value = localStorage.getItem("titleData");
+}
 //description input validation
 
 let blogTxtarea = document.querySelector(".blog_txtarea ");
@@ -156,6 +198,7 @@ let txtVar = false;
 
 blogTxtarea.addEventListener("input", function () {
   blogValidation();
+  setBlogData();
 });
 function blogValidation() {
   if (blogTxtarea.value.trim().length >= 2) {
@@ -169,6 +212,13 @@ function blogValidation() {
   }
 }
 
+function setBlogData() {
+  localStorage.setItem("blogData", blogTxtarea.value);
+}
+function getBlogData() {
+  blogTxtarea.value = localStorage.getItem("blogData");
+}
+
 //date input validation
 
 let dateValidation = document.querySelector(".date_input");
@@ -176,6 +226,7 @@ let dateVar = false;
 
 dateValidation.addEventListener("input", function () {
   dateValidationFun();
+  setDateData();
 });
 
 function dateValidationFun() {
@@ -191,6 +242,15 @@ function dateValidationFun() {
     inputFilledFunction();
   }
 }
+
+function setDateData() {
+  localStorage.setItem("dateData", dateValidation.value);
+}
+
+function getDateData() {
+  dateValidation.value = localStorage.getItem("dateData");
+}
+
 // category validation
 
 let dropbtn = document.querySelector(".dropdown");
@@ -205,9 +265,7 @@ let selectedVar = false;
 dropdownButton.addEventListener("click", function (e) {
   e.preventDefault();
   dropbtn.classList.toggle("active");
-  // selectFunction();
 });
-
 function selectFunction() {
   let selectedLabels = [];
   let checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -219,6 +277,7 @@ function selectFunction() {
       onclick="removeItem(${index})"><i class="fa-solid fa-xmark"></i></span></div>`;
       selectedLabels.push(newElement);
     }
+    localStorage.setItem("selectedData", selectedLabels.join(""));
   });
 
   if (selectedLabels.length > 0) {
@@ -245,6 +304,12 @@ function removeItem(index) {
   let checkboxes = document.querySelectorAll('input[type="checkbox"]');
   checkboxes[index].checked = false;
   selectFunction();
+}
+function getSelectedData() {
+  let selectedItem = localStorage.getItem("selectedData");
+  if (selectedItem) {
+    dropdownButton.innerHTML = selectedItem;
+  }
 }
 
 //category API
@@ -300,6 +365,15 @@ function emailvalidFun() {
     emailVar = false;
     inputFilledFunction();
   }
+  setEmailData();
+}
+
+function setEmailData() {
+  localStorage.setItem("emailData", emailValidation.value);
+}
+
+function getEmailData() {
+  emailValidation.value = localStorage.getItem("emailData");
 }
 
 let successBody = document.querySelector(".success_body");
@@ -312,11 +386,11 @@ endBtn.addEventListener("click", function (e) {
   postBlog();
   getTokenFunc("gigagiorgadze@redberry.ge").then((item) => postBlog(item));
 });
+
 close.addEventListener("click", function (e) {
   successBody.style.visibility = "hidden";
   successBody.style.opacity = "0";
 });
-
 
 // post blog
 
@@ -368,3 +442,44 @@ async function getTokenFunc(email) {
   }
 }
 
+function loadInfo() {
+  if (
+    localStorage.getItem("imageData") &&
+    localStorage.getItem("authorData") &&
+    localStorage.getItem("titleData") &&
+    localStorage.getItem("blogData") &&
+    localStorage.getItem("dateData") &&
+    localStorage.getItem("selectedData") &&
+    localStorage.getItem("emailData")
+  ) {
+    imgVar = true;
+    authorVarSimbols = true;
+    authorVarWords = true;
+    georgianVar = true;
+    titleVar = true;
+    txtVar = true;
+    dateVar = true;
+    selectedVar = true;
+    emailVar = true;
+    sendButton.style.display = "none";
+    endBtn.style.display = "block";
+    console.log(txtVar);
+    console.log("hello");
+  } else {
+    txtVar = false;
+    sendButton.style.display = "block";
+    endBtn.style.display = "none";
+  }
+}
+console.log(localStorage.getItem("emailData"));
+window.onload = function () {
+  loadDataFromLocalStorage();
+  getAuthorData();
+  getTitleData();
+  getBlogData();
+  getDateData();
+  getSelectedData();
+  getEmailData();
+  loadInfo();
+  inputFilledFunction();
+};
